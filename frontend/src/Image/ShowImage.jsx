@@ -10,6 +10,7 @@ export const ShowImage = ()=>{
     const readimage =async ()=>{
         const data = await axios.get("http://localhost:4000/imageread");
         setImage(data.data);
+        console.log("hello world");
     }
     useEffect(()=>{
         readimage();
