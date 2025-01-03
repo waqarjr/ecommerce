@@ -45,7 +45,6 @@ const delImage = async (req,res)=>{
             for (const item of multiple) {
                 if (item.image) {
                     const filePath = path.join(__dirname, '../', item.image.replace('http://localhost:4000/', ''));
-                            
                     if (fs.existsSync(filePath)) {
                         fs.unlinkSync(filePath);
                     }
@@ -55,4 +54,23 @@ const delImage = async (req,res)=>{
     res.json({ message: "Your image has been deleted successfully." });
 }
 
-module.exports = {create,readimage,readMultipleImage,delImage}
+
+const updateImage  = async(req,res)=>{
+    const {id} =  req.params;
+    // console.log(id); 
+    const mainImg =  await mainImage.findOne({_id:id})
+     res.json(mainImg);
+}
+
+const updateMulImage = async(req,res)=>{
+    const multiple = await ImageModule.find({ person_id: req.params.id });
+    res.json(multiple);
+}
+
+const updateData = async (req,res)=>{
+const {title , price} =req.body;
+const singleImage = req.files["image"] ? req.files["image"][0] : null;
+console.log(title,price,singleImage);
+
+}
+module.exports = {create,readimage,readMultipleImage,delImage,updateImage,updateMulImage,updateData}

@@ -15,6 +15,7 @@ import './App.css';
 import CreatImage from './mulImages/CreatImage';
 import Layout from './mulImages/Layout';
 import ReadImage from './mulImages/ReadImage';
+import UpdateImage from './mulImages/UpdateImage';
 
 export  const  App = () => {
   
@@ -45,7 +46,7 @@ export  const  App = () => {
         <Route path='/' element={<Layout/>} >
           <Route path='/' element={<ReadImage/>} />
           <Route path='/creatimage' element={<CreatImage/>} />
-          <Route path='/updateimage/:id' element={<ReadImage/>} />
+          <Route path='/updateimage/:id' element={<UpdateImage/>} />
         </Route>
       </Routes>
       </BrowserRouter>
